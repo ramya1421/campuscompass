@@ -1,66 +1,95 @@
-# CampusCompass
+# 🎓 CampusCompass
 
-Modern college discovery + discussion platform built with Next.js App Router, Prisma, PostgreSQL, and NextAuth.
+CampusCompass is a modern full-stack college discovery and discussion platform where students can explore, compare, and discuss colleges through intelligent search, AI-style recommendations, and community-driven discussions.
 
-## Stack
+The platform combines college discovery (Careers360 / Collegedunia style) with Reddit-style student discussions.
 
-- **Frontend:** Next.js (App Router), React, TypeScript, Tailwind CSS, shadcn-style UI
-- **Backend:** Next.js API Routes
-- **Database:** PostgreSQL + Prisma ORM
-- **Auth:** NextAuth (Credentials + JWT sessions)
-- **Libraries:** React Hook Form, Zod, Axios, React Hot Toast, Lucide, TanStack Table, Recharts
+Built as a production-oriented internship project with scalable architecture, clean engineering practices, and reliable backend systems.
 
-## Features
+---
 
-- Authentication (signup, login, logout, protected routes)
-- Searchable college listing with filters, sorting, pagination
-- College detail pages with tabs, charts, reviews, facilities
-- Compare 2–3 colleges side-by-side
-- Reddit-style discussions with threaded comments and likes
-- Saved colleges dashboard
-- AI-style college predictor (rule-based engine)
-- Dark mode, responsive layout, loading states, error handling
+## 🚀 Features
 
-## Project Structure
+- **College discovery** — search, filter (state, fees, rating, course type), sort, pagination
+- **College detail pages** — overview, courses, placements charts, fees, reviews, facilities, discussions
+- **Compare** — side-by-side comparison of 2–3 colleges with highlighted winners
+- **Discussions** — categories, threaded comments, likes
+- **Authentication** — signup, login, protected routes, bcrypt passwords
+- **Saved colleges** — personalized bookmarks dashboard
+- **AI predictor** — rule-based admission recommendations
+- **UX** — dark mode, skeleton loaders, toast notifications, responsive layout
+
+---
+
+## 🛠️ Tech Stack
+
+| Layer | Technologies |
+|--------|----------------|
+| Frontend | Next.js (App Router), React, TypeScript, Tailwind CSS, shadcn-style UI |
+| Backend | Next.js API Routes |
+| Database | PostgreSQL, Prisma ORM |
+| Auth | NextAuth (Credentials + JWT) |
+| Libraries | React Hook Form, Zod, Axios, React Hot Toast, Recharts, TanStack Table, Lucide |
+
+---
+
+## 📂 Project Structure
 
 ```txt
 src/
- ├── app/                 # App Router pages + API routes
+ ├── app/                 # Pages + API routes
  ├── components/          # UI + feature components
  ├── hooks/
  ├── lib/
  ├── services/
+ ├── actions/
  ├── types/
 prisma/
  ├── schema.prisma
  ├── seed.ts
 ```
 
-## Getting Started
+---
 
-### 1. Install dependencies
+## ⚡ Installation & Setup
+
+### Clone repository
 
 ```bash
+git clone https://github.com/ramya1421/campuscompass.git
 cd campuscompass
+```
+
+### Install dependencies
+
+```bash
 npm install
 ```
 
-### 2. Configure environment
+### Environment variables
 
-Copy `.env.example` to `.env` and set:
+Copy `.env.example` to `.env`:
 
-- `DATABASE_URL` (PostgreSQL connection string)
-- `NEXTAUTH_URL`
-- `NEXTAUTH_SECRET`
+```env
+DATABASE_URL="your_postgresql_database_url"
+NEXTAUTH_SECRET="your_secret"
+NEXTAUTH_URL="http://localhost:3000"
+```
 
-### 3. Setup database
+### Database setup
 
 ```bash
 npm run db:push
 npm run db:seed
 ```
 
-### 4. Run development server
+Or in one step:
+
+```bash
+npm run db:setup
+```
+
+### Start development server
 
 ```bash
 npm run dev
@@ -68,35 +97,46 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-## Demo Credentials
+### Demo credentials
 
 - **Email:** `aarav@campuscompass.dev`
 - **Password:** `Password@123`
 
-## Deployment (Vercel)
+---
 
-1. Push repository to GitHub
-2. Import project in Vercel
-3. Add environment variables (`DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET`)
-4. Use a managed PostgreSQL provider (Neon, Supabase, Railway, etc.)
-5. Deploy
+## 🗄️ Database Models
 
-Recommended deploy command:
+- User, College, Course, Review, Discussion, Comment
+- SavedCollege, Comparison, PredictorHistory
+- NextAuth: Account, Session, VerificationToken
 
-```bash
-npx prisma migrate deploy && npm run build
-```
+Seed includes **56+ Indian colleges** with courses, reviews, and discussions.
 
-## Scripts
+---
 
-| Script | Description |
-|---|---|
-| `npm run dev` | Start local dev server |
-| `npm run build` | Generate Prisma client and build app |
-| `npm run db:push` | Push Prisma schema to DB |
-| `npm run db:seed` | Seed 50+ Indian colleges and demo content |
-| `npm run db:setup` | Push schema + seed in one step |
+## 🎯 Engineering Decisions
 
-## Seed Data
+- **Service layer** — business logic separated from API routes
+- **Zod validation** — shared schemas for forms and APIs
+- **Server-side filtering** — debounced search with Prisma `where` / `orderBy`
+- **JWT sessions** — fewer DB round-trips (tradeoff: harder instant revocation)
+- **Modular components** — feature folders under `components/`
 
-Includes 50+ Indian colleges across multiple states, courses, reviews, discussions, comments, saved colleges, comparisons, and predictor history.
+---
+
+## 🚢 Deployment (Vercel)
+
+1. Import repo on Vercel
+2. Set `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET`
+3. Use Neon, Supabase, or Railway for PostgreSQL
+4. Build command: `prisma generate && next build`
+
+---
+
+## 📜 License
+
+Educational and internship evaluation purposes.
+
+## 👩‍💻 Author
+
+Developed by **Ramya Varshini** as a production-oriented full-stack internship project.
