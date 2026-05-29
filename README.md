@@ -8,6 +8,25 @@ Built as a production-oriented internship project with scalable architecture, cl
 
 ---
 
+## 🌐 Live Demo
+
+| Resource | Link |
+|----------|------|
+| **Production app** | [https://campuscompass-three.vercel.app](https://campuscompass-three.vercel.app) |
+| **GitHub repository** | [https://github.com/ramya1421/campuscompass](https://github.com/ramya1421/campuscompass) |
+| **Vercel dashboard** | [https://vercel.com/vrv1421-5049s-projects/campuscompass](https://vercel.com/vrv1421-5049s-projects/campuscompass) |
+
+**Deployed on:** [Vercel](https://vercel.com) · **Stack:** Next.js 16, PostgreSQL, Prisma, NextAuth
+
+> **Note:** Set production `DATABASE_URL`, `NEXTAUTH_URL`, and `NEXTAUTH_SECRET` in Vercel and run `npm run db:seed` for full data and auth on the live site. See [DEPLOYMENT.md](./DEPLOYMENT.md).
+
+### Demo credentials (after database seed)
+
+- **Email:** `aarav@campuscompass.dev`
+- **Password:** `Password@123`
+
+---
+
 ## 🚀 Features
 
 - **College discovery** — search, filter (state, fees, rating, course type), sort, pagination
@@ -97,11 +116,6 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000)
 
-### Demo credentials
-
-- **Email:** `aarav@campuscompass.dev`
-- **Password:** `Password@123`
-
 ---
 
 ## 🗄️ Database Models
@@ -124,12 +138,15 @@ Seed includes **56+ Indian colleges** with courses, reviews, and discussions.
 
 ---
 
-## 🚢 Deployment (Vercel)
+## 🚢 Deployment
 
-1. Import repo on Vercel
-2. Set `DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET`
-3. Use Neon, Supabase, or Railway for PostgreSQL
-4. Build command: `prisma generate && next build`
+This project is deployed on **Vercel**:
+
+- **Live URL:** https://campuscompass-three.vercel.app
+- **Build command:** `prisma generate && next build`
+- **Config:** [`vercel.json`](./vercel.json)
+
+Full setup, environment variables, and database seeding: **[DEPLOYMENT.md](./DEPLOYMENT.md)**
 
 ---
 
