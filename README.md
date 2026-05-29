@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# CampusCompass
+
+Modern college discovery + discussion platform built with Next.js App Router, Prisma, PostgreSQL, and NextAuth.
+
+## Stack
+
+- **Frontend:** Next.js (App Router), React, TypeScript, Tailwind CSS, shadcn-style UI
+- **Backend:** Next.js API Routes
+- **Database:** PostgreSQL + Prisma ORM
+- **Auth:** NextAuth (Credentials + JWT sessions)
+- **Libraries:** React Hook Form, Zod, Axios, React Hot Toast, Lucide, TanStack Table, Recharts
+
+## Features
+
+- Authentication (signup, login, logout, protected routes)
+- Searchable college listing with filters, sorting, pagination
+- College detail pages with tabs, charts, reviews, facilities
+- Compare 2–3 colleges side-by-side
+- Reddit-style discussions with threaded comments and likes
+- Saved colleges dashboard
+- AI-style college predictor (rule-based engine)
+- Dark mode, responsive layout, loading states, error handling
+
+## Project Structure
+
+```txt
+src/
+ ├── app/                 # App Router pages + API routes
+ ├── components/          # UI + feature components
+ ├── hooks/
+ ├── lib/
+ ├── services/
+ ├── types/
+prisma/
+ ├── schema.prisma
+ ├── seed.ts
+```
 
 ## Getting Started
 
-First, run the development server:
+### 1. Install dependencies
+
+```bash
+cd campuscompass
+npm install
+```
+
+### 2. Configure environment
+
+Copy `.env.example` to `.env` and set:
+
+- `DATABASE_URL` (PostgreSQL connection string)
+- `NEXTAUTH_URL`
+- `NEXTAUTH_SECRET`
+
+### 3. Setup database
+
+```bash
+npm run db:push
+npm run db:seed
+```
+
+### 4. Run development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Demo Credentials
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Email:** `aarav@campuscompass.dev`
+- **Password:** `Password@123`
 
-## Learn More
+## Deployment (Vercel)
 
-To learn more about Next.js, take a look at the following resources:
+1. Push repository to GitHub
+2. Import project in Vercel
+3. Add environment variables (`DATABASE_URL`, `NEXTAUTH_URL`, `NEXTAUTH_SECRET`)
+4. Use a managed PostgreSQL provider (Neon, Supabase, Railway, etc.)
+5. Deploy
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Recommended deploy command:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npx prisma migrate deploy && npm run build
+```
 
-## Deploy on Vercel
+## Scripts
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+| Script | Description |
+|---|---|
+| `npm run dev` | Start local dev server |
+| `npm run build` | Generate Prisma client and build app |
+| `npm run db:push` | Push Prisma schema to DB |
+| `npm run db:seed` | Seed 50+ Indian colleges and demo content |
+| `npm run db:setup` | Push schema + seed in one step |
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Seed Data
+
+Includes 50+ Indian colleges across multiple states, courses, reviews, discussions, comments, saved colleges, comparisons, and predictor history.
